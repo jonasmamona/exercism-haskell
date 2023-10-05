@@ -27,9 +27,6 @@ getPlanetOrbitalPeriod planet =
     Neptune -> 164.79132
     Earth -> 1.0
 
-convertAgeToSeconds :: Float -> Float
-convertAgeToSeconds age = age * earthYearInSeconds
-
 convertSecondsToEarthYear :: Float -> Float
 convertSecondsToEarthYear seconds = seconds / earthYearInSeconds
 
@@ -37,4 +34,4 @@ roundFloat :: Float -> Float
 roundFloat x = read $ showFFloat (Just 2) x ""
 
 ageOn :: Planet -> Float -> Float
-ageOn planet seconds = roundFloat ((convertSecondsToEarthYear seconds / getPlanetOrbitalPeriod planet) * earthYearInSeconds)
+ageOn planet seconds = convertSecondsToEarthYear seconds / getPlanetOrbitalPeriod planet
